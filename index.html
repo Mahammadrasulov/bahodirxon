@@ -3,169 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bahodirjon | Portfolio</title>
+<title>Bahodirjon | Pro Portfolio</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 body{
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: #0f172a;
     color:white;
+    scroll-behavior:smooth;
 }
 
 /* NAVBAR */
 nav{
+    position:fixed;
+    width:100%;
+    top:0;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 50px;
-    background:rgba(0,0,0,0.4);
-    position:sticky;
-    top:0;
+    padding:15px 40px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    z-index:1000;
 }
 
 nav h1{
-    font-size:22px;
-    color:#00e6e6;
+    color:#38bdf8;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:20px;
-}
-
-nav ul li{
-    cursor:pointer;
+nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
     transition:0.3s;
 }
 
-nav ul li:hover{
-    color:#00e6e6;
+nav a:hover{
+    color:#38bdf8;
 }
 
 /* HERO */
 .hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:80px 20px;
+    padding:20px;
+    background: radial-gradient(circle at top, #1e293b, #0f172a);
 }
 
 .hero img{
-    width:150px;
-    height:150px;
+    width:140px;
+    height:140px;
     border-radius:50%;
-    border:3px solid #00e6e6;
+    border:3px solid #38bdf8;
+    margin-bottom:20px;
+    animation: float 3s ease-in-out infinite;
 }
 
-.hero h2{
-    margin-top:20px;
-    font-size:30px;
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+.hero h1{
+    font-size:40px;
 }
 
 .hero p{
+    color:#cbd5e1;
     margin-top:10px;
-    color:#ccc;
 }
 
 /* BUTTON */
 .btn{
     margin-top:20px;
-    padding:10px 20px;
+    padding:12px 25px;
     border:none;
-    background:#00e6e6;
+    background:#38bdf8;
     color:black;
     font-weight:bold;
+    border-radius:8px;
     cursor:pointer;
-    border-radius:5px;
     transition:0.3s;
 }
 
 .btn:hover{
+    transform:scale(1.1);
     background:white;
 }
 
-/* CARD SECTION */
-.container{
+/* SECTIONS */
+section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+h2{
+    margin-bottom:20px;
+    color:#38bdf8;
+}
+
+/* SKILLS */
+.skills{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.skill{
+    background:rgba(255,255,255,0.1);
+    padding:15px 20px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.skill:hover{
+    transform:translateY(-5px);
+    background:#38bdf8;
+    color:black;
+}
+
+/* PROJECTS */
+.projects{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
     gap:20px;
-    padding:50px;
 }
 
-.card{
-    background:rgba(255,255,255,0.1);
-    padding:20px;
+.project{
     width:250px;
+    padding:20px;
+    background:rgba(255,255,255,0.08);
     border-radius:10px;
-    backdrop-filter: blur(10px);
     transition:0.3s;
 }
 
-.card:hover{
-    transform:translateY(-10px);
-    background:rgba(255,255,255,0.2);
+.project:hover{
+    transform:scale(1.05);
+    background:rgba(56,189,248,0.2);
+}
+
+/* CONTACT */
+.contact{
+    background:#1e293b;
 }
 
 footer{
     text-align:center;
     padding:20px;
-    background:rgba(0,0,0,0.4);
+    background:black;
     margin-top:40px;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
     <h1>Bahodirjon</h1>
-    <ul>
-        <li>Bosh sahifa</li>
-        <li>Men haqimda</li>
-        <li>Loyihalar</li>
-        <li>Aloqa</li>
-    </ul>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-    <img src="https://via.placeholder.com/150" alt="profil">
-    <h2>Salom, men Bahodirjon 👋</h2>
-    <p>Men oddiy saytlar va dasturlashni o‘rganayotgan talabaman</p>
-    <button class="btn">Menga yozish</button>
+<div class="hero" id="home">
+    <img src="https://via.placeholder.com/140">
+    <h1>Salom, men Bahodirjon 👋</h1>
+    <p>Web Developer | Student | AI & Data Science yo‘nalishi</p>
+    <button class="btn" onclick="alert('Telegram: @bahodirjon')">
+        Menga yozish
+    </button>
 </div>
 
-<!-- CARDS -->
-<div class="container">
+<!-- ABOUT -->
+<section id="about">
+    <h2>Men haqimda</h2>
+    <p style="max-width:600px;margin:auto;color:#cbd5e1;">
+        Men dasturlashni o‘rganayotgan talabaman. 
+        Web saytlar, AI va texnologiyalarga qiziqaman.
+        Maqsadim — professional dasturchi bo‘lish.
+    </p>
+</section>
 
-    <div class="card">
-        <h3>🌐 Web Development</h3>
-        <p>Oddiy va chiroyli saytlar yarataman</p>
+<!-- SKILLS -->
+<section id="skills">
+    <h2>Ko‘nikmalar</h2>
+    <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">C#</div>
+        <div class="skill">Python</div>
     </div>
+</section>
 
-    <div class="card">
-        <h3>💻 Dasturlash</h3>
-        <p>C#, Python va web texnologiyalar</p>
+<!-- PROJECTS -->
+<section id="projects">
+    <h2>Loyihalar</h2>
+    <div class="projects">
+        <div class="project">
+            <h3>Sayt 1</h3>
+            <p>Oddiy portfolio sayt</p>
+        </div>
+
+        <div class="project">
+            <h3>Sayt 2</h3>
+            <p>GitHub Pages loyiha</p>
+        </div>
+
+        <div class="project">
+            <h3>Sayt 3</h3>
+            <p>AI mini loyiha</p>
+        </div>
     </div>
+</section>
 
-    <div class="card">
-        <h3>📊 AI & Data</h3>
-        <p>Sun'iy intellekt va analizga qiziqaman</p>
-    </div>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2>Aloqa</h2>
+    <p>Email: example@gmail.com</p>
+    <p>Telegram: @bahodirjon</p>
+</section>
 
-</div>
-
-<!-- FOOTER -->
 <footer>
-    © 2026 Bahodirjon | Barcha huquqlar himoyalangan
+    © 2026 Bahodirjon | Pro Portfolio
 </footer>
 
 </body>
