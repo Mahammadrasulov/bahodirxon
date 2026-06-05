@@ -1,11 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="uz">
 <head>
-    <title>Mening saytim</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahodirjon | Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color:white;
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:rgba(0,0,0,0.4);
+    position:sticky;
+    top:0;
+}
+
+nav h1{
+    font-size:22px;
+    color:#00e6e6;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:20px;
+}
+
+nav ul li{
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav ul li:hover{
+    color:#00e6e6;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero img{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    border:3px solid #00e6e6;
+}
+
+.hero h2{
+    margin-top:20px;
+    font-size:30px;
+}
+
+.hero p{
+    margin-top:10px;
+    color:#ccc;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#00e6e6;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:white;
+}
+
+/* CARD SECTION */
+.container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:50px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    width:250px;
+    border-radius:10px;
+    backdrop-filter: blur(10px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.2);
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.4);
+    margin-top:40px;
+}
+</style>
+
 </head>
+
 <body>
-    <h1>Salom Bahodirjon!</h1>
-    <p>Bu mening birinchi oddiy saytim.</p>
-    <img src="https://via.placeholder.com/300">
+
+<!-- NAVBAR -->
+<nav>
+    <h1>Bahodirjon</h1>
+    <ul>
+        <li>Bosh sahifa</li>
+        <li>Men haqimda</li>
+        <li>Loyihalar</li>
+        <li>Aloqa</li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <img src="https://via.placeholder.com/150" alt="profil">
+    <h2>Salom, men Bahodirjon 👋</h2>
+    <p>Men oddiy saytlar va dasturlashni o‘rganayotgan talabaman</p>
+    <button class="btn">Menga yozish</button>
+</div>
+
+<!-- CARDS -->
+<div class="container">
+
+    <div class="card">
+        <h3>🌐 Web Development</h3>
+        <p>Oddiy va chiroyli saytlar yarataman</p>
+    </div>
+
+    <div class="card">
+        <h3>💻 Dasturlash</h3>
+        <p>C#, Python va web texnologiyalar</p>
+    </div>
+
+    <div class="card">
+        <h3>📊 AI & Data</h3>
+        <p>Sun'iy intellekt va analizga qiziqaman</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Bahodirjon | Barcha huquqlar himoyalangan
+</footer>
+
 </body>
 </html>
