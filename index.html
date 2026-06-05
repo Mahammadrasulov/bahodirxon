@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bahodirjon | Smart Portfolio</title>
+<title>Smart Kitchen AI</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial;
-    background:#0f172a;
+    background: radial-gradient(circle, #0f172a, #020617);
     color:white;
-    scroll-behavior:smooth;
 }
 
 /* NAV */
@@ -19,11 +18,11 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    background:rgba(0,0,0,0.7);
     display:flex;
     justify-content:space-between;
     padding:15px 30px;
-    z-index:1000;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
 }
 
 nav a{
@@ -31,7 +30,6 @@ nav a{
     margin:0 10px;
     text-decoration:none;
 }
-
 nav a:hover{color:#38bdf8}
 
 /* HERO */
@@ -44,10 +42,9 @@ nav a:hover{color:#38bdf8}
     text-align:center;
 }
 
-.hero img{
-    width:140px;
-    border-radius:50%;
-    border:3px solid #38bdf8;
+.hero h1{
+    font-size:40px;
+    color:#38bdf8;
 }
 
 .btn{
@@ -56,57 +53,52 @@ nav a:hover{color:#38bdf8}
     border:none;
     background:#38bdf8;
     cursor:pointer;
-    border-radius:8px;
+    border-radius:10px;
+    font-weight:bold;
 }
 
-/* SECTIONS */
-section{
-    padding:80px 20px;
-    text-align:center;
-}
-
-h2{color:#38bdf8}
-
-/* SKILLS */
-.skills{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.skill{
-    background:rgba(255,255,255,0.1);
-    padding:10px 15px;
-    border-radius:8px;
-}
-
-/* RECIPE */
+/* PRODUCTS */
 #products{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:10px;
+    margin-top:20px;
 }
 
 .product{
-    background:rgba(255,255,255,0.1);
-    padding:8px 12px;
-    border-radius:6px;
+    padding:10px 15px;
+    background:rgba(255,255,255,0.08);
+    border-radius:8px;
     cursor:pointer;
+    transition:0.3s;
 }
 
-.selected{background:#38bdf8;color:black;}
+.product:hover{
+    transform:scale(1.05);
+}
+
+.selected{
+    background:#38bdf8;
+    color:black;
+}
+
+/* SECTION */
+section{
+    padding:80px 20px;
+    text-align:center;
+}
 
 #result{
     margin-top:20px;
     padding:15px;
-    background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.05);
+    border-radius:10px;
 }
 
 /* CONTACT */
 .contact{
-    background:#1e293b;
+    background:#111827;
 }
 
 footer{
@@ -119,120 +111,123 @@ footer{
 
 <body>
 
-<!-- NAV -->
 <nav>
-    <div><b>Bahodirjon</b></div>
+    <div><b>Smart Kitchen AI</b></div>
     <div>
         <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#recipe">Recipe</a>
         <a href="#contact">Aloqa</a>
     </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero" id="home">
-    <img src="https://via.placeholder.com/140">
-    <h1>Salom, men Bahodirjon 👋</h1>
-    <p>Web Developer | Student | AI & Data Science</p>
-    <button class="btn" onclick="alert('Telegram: @bahodirjon')">Menga yozish</button>
+    <h1>🍲 Smart Kitchen AI</h1>
+    <p>Uyda bor mahsulotlardan avtomatik retsept topadi</p>
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-<h2>Men haqimda</h2>
-<p>Men dasturlashni o‘rganayotgan talabaman.</p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-<h2>Ko‘nikmalar</h2>
-<div class="skills">
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JS</div>
-<div class="skill">Python</div>
-</div>
-</section>
-
-<!-- RECIPE -->
 <section id="recipe">
-<h2>🍲 Smart Recipe Finder</h2>
 
-<p>Mahsulotlarni tanla:</p>
+<h2>Mahsulotlarni tanla</h2>
 
 <div id="products"></div>
 
 <br>
 
-<button onclick="find()">🔍 Retsept topish</button>
-<button onclick="randomRecipe()">🎲 Tasodifiy</button>
+<button class="btn" onclick="findRecipe()">🔍 Retsept topish</button>
+<button class="btn" onclick="fast()">⚡ 15 min</button>
+<button class="btn" onclick="diet()">🥗 Parhez</button>
+<button class="btn" onclick="random()">🎲 Random</button>
 
 <div id="result">Natija shu yerda chiqadi</div>
+
 </section>
 
-<!-- CONTACT (O‘CHIRILMAGAN!) -->
 <section id="contact" class="contact">
 <h2>Aloqa</h2>
 <p>Email: example@gmail.com</p>
 <p>Telegram: @bahodirjon</p>
 </section>
 
-<footer>
-© 2026 Bahodirjon
-</footer>
+<footer>© 2026 Smart Kitchen AI</footer>
 
 <script>
 
-let products = ["Go'sht","Kartoshka","Sabzi","Piyoz","Pomidor","Tuxum"];
+// PRODUCTS
+let products = ["Go'sht","Kartoshka","Sabzi","Piyoz","Pomidor","Tuxum","Guruch"];
 
+// RECIPES
 let recipes = [
-{name:"Kartoshkali omlet",items:["Kartoshka","Tuxum"],desc:"10 daqiqa"},
-{name:"Qovurilgan kartoshka",items:["Kartoshka","Piyoz"],desc:"15 daqiqa"},
-{name:"Sabzavot salat",items:["Pomidor","Sabzi","Piyoz"],desc:"10 daqiqa"}
+{name:"Kartoshkali omlet",items:["Kartoshka","Tuxum"],time:10,diet:true},
+{name:"Qovurilgan kartoshka",items:["Kartoshka","Piyoz"],time:15,diet:true},
+{name:"Go'shtli guruch",items:["Go'sht","Guruch","Sabzi"],time:30,diet:false},
+{name:"Sabzavot salat",items:["Pomidor","Sabzi","Piyoz"],time:10,diet:true}
 ];
 
 let selected = [];
+let popularity = JSON.parse(localStorage.getItem("pop")||"{}");
 
+// RENDER PRODUCTS
 function render(){
 let box = document.getElementById("products");
-box.innerHTML = "";
+box.innerHTML="";
 
-products.forEach(p=>{
-let d = document.createElement("div");
-d.className = "product";
-if(selected.includes(p)) d.classList.add("selected");
+products
+.sort((a,b)=>(popularity[b]||0)-(popularity[a]||0))
+.forEach(p=>{
 
-d.innerText = p;
+let div=document.createElement("div");
+div.className="product";
 
-d.onclick = ()=>{
+if(selected.includes(p)) div.classList.add("selected");
+
+div.innerText=p;
+
+div.onclick=()=>{
+
 if(selected.includes(p)){
 selected = selected.filter(x=>x!==p);
 }else{
 selected.push(p);
+popularity[p]=(popularity[p]||0)+1;
+localStorage.setItem("pop",JSON.stringify(popularity));
 }
+
 render();
 }
 
-box.appendChild(d);
+box.appendChild(div);
 });
 }
 
-function find(){
+// FIND
+function findRecipe(){
 let res = recipes.filter(r =>
-selected.every(i => r.items.includes(i))
+selected.every(i=>r.items.includes(i))
 );
 
-document.getElementById("result").innerHTML =
-res.length ? res.map(r=>`<h3>${r.name}</h3><p>${r.desc}</p>`).join("")
-: "❌ Retsept topilmadi";
+show(res);
 }
 
-function randomRecipe(){
+// FILTERS
+function fast(){
+show(recipes.filter(r=>r.time<=15));
+}
+
+function diet(){
+show(recipes.filter(r=>r.diet));
+}
+
+function random(){
 let r = recipes[Math.floor(Math.random()*recipes.length)];
-document.getElementById("result").innerHTML =
-`<h3>${r.name}</h3><p>${r.desc}</p>`;
+document.getElementById("result").innerHTML=
+`<h3>${r.name}</h3>`;
+}
+
+function show(list){
+document.getElementById("result").innerHTML=
+list.length?
+list.map(r=>`<h3>${r.name}</h3>`).join("")
+:"❌ topilmadi";
 }
 
 render();
